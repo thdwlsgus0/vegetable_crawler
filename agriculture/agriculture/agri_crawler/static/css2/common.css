@@ -1,0 +1,7 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/* 메뉴바 높이 줄어듦 */
+.on {
+    background-color: #fff !important;
+    padding: 0 !important;
+}

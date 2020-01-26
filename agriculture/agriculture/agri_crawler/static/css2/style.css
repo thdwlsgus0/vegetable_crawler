@@ -1,0 +1,978 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/*
+Author: XpeedStudio
+Author URI: http://themeforest.net/user/XpeedStudio/portfolio
+*/
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+html,
+body {
+    font-size: 15px;
+    color: #565656;
+    width: 100%;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    font-family: 'robotolight';
+    font-weight: 300;
+    position: relative;
+}
+
+img {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+
+a,
+a:hover,
+a:active,
+a:focus {
+    text-decoration: none;
+    outline: none;
+}
+a,
+button,
+a span {
+    -webkit-transition: 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
+    transition: 0.2s ease-in-out;
+}
+.btn.extra-width {
+    padding: 13px 40px;
+}
+.btn:focus,
+.btn:active {
+    outline: inherit;
+}
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    /*    direction: rtl;*/
+}
+p {
+    margin: 0 0 15px;
+}
+.clear {
+    clear: both;
+}
+/*ol,
+ul {
+    list-style: none;
+    padding: 0;
+}*/
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+}
+textarea,
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+    outline: none;
+}
+
+.form-control {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    font-size: 16px;
+}
+
+.form-control:focus {
+    border-color: #0043af;
+}
+
+h1,
+h2,
+h3 {
+    /*font-family: 'Lane', sans-serif;*/
+    font-weight: 300;
+    margin: 0;
+}
+h4,
+h5 {
+    /*font-family: 'roboto', sans-serif;*/
+    font-weight: 300;
+    margin: 0;
+    line-height: 2rem;
+}
+h1 {
+    font-size: 3rem;
+    line-height: 4rem;
+    font-weight: 300;
+}
+h2 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    margin-bottom: .9rem;
+}
+h3 {
+    font-weight: 300;
+    margin-bottom: .9rem;
+    font-size: 2.1rem;
+    line-height: 2.5rem;
+}
+h4 {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    margin-bottom: 1.1rem;
+}
+h5 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+h6 {
+    font-size: 1rem;
+    margin-bottom: .9rem;
+}
+p {
+    line-height: 1.5rem;
+    font-size: 1.1rem;
+}
+p:last-child {
+    margin-bottom: 0px;
+}
+/*.home-wrap h1,*/
+.home-wrap h2,
+.home-wrap h3,
+.home-wrap h4,
+.home-wrap h5,
+.home-wrap p {;
+    color: #ffffff;
+    /*font-family: 'roboto', sans-serif;*/
+}
+.text {
+    color: #333333;
+}
+.colorstext {
+    color: #f56363;
+}
+.coloricon i {
+    color: #f56363;
+}
+.colorsbg {
+    background: #f56363;
+    color: #ffffff;
+}
+
+.lightbg {
+    background-color: #f9f9f9;
+}
+.transition {
+    -webkit-transition: all 300ms linear;
+    -moz-transition: all 300ms linear;
+    -o-transition: all 300ms linear;
+    -ms-transition: all 300ms linear;
+    transition: all 300ms linear;
+}
+
+/*
+Section
+*/
+.sections {
+    margin-top : 90px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+}
+.sections2 {
+    margin-top : 90px;
+    padding-top:40px;
+    padding-bottom:40px;
+    position: relative;
+    overflow: hidden;
+}
+section.data-solution{
+    margin-top :  0px;
+}
+.sections.footer {
+    padding-bottom: 80px;
+}
+section .subtitle h5 {
+    margin-top: 10px;
+    font-size: 1.3rem;
+    font-family: 'roboto', sans-serif;
+}
+.parallax-section {
+    max-width: 100%;
+    color: #ffffff;
+}
+section .title-half h2 {
+    font-size: 3rem;
+    line-height: 4rem;
+    font-weight: 300;
+    margin-bottom: 1.4rem;
+}
+section .subtitle-half h5 {
+    font-weight: 100;
+    font-size: 12px;
+}
+
+
+.heading {
+    margin-bottom: 4rem;
+}
+.overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    min-height: 750px;
+}
+.overlay-fluid-block {
+    background-color: rgba(0, 0, 0, 0.15);
+    width: 100%;
+}
+.home-overlay-fluid {
+    background-color: rgba(41, 41, 41, 0.68);
+    width: 80%;
+    margin: auto;
+}
+.overlay-img {
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    color: #ffffff;
+}
+.no-padding {
+    padding: 0 !important;
+}
+.fluid-blocks-col {
+    padding: 70px 40px 0 80px;
+}
+.fluid-blocks-col-right {
+    padding: 70px 80px 0 40px;
+}
+
+/*
+Separator
+*/
+.separator {
+    height: 2px;
+    width: 80px;
+    margin: auto;
+    background: #ededed;
+}
+
+/* Button 버튼 모음 */
+.btn-primary.active.focus,
+.btn-primary.active:focus,
+.btn-primary.active:hover,
+.btn-primary:active.focus,
+.btn-primary:active:focus,
+.btn-primary:active:hover,
+.open > .dropdown-toggle.btn-primary.focus,
+.open > .dropdown-toggle.btn-primary:focus,
+.open > .dropdown-toggle.btn-primary:hover,
+.btn-primary.focus,
+.btn-primary:focus,
+.btn-primary.disabled{
+    color: #ffffff;
+    background-color:#64c583;
+    border-color: #f56363;
+}
+.btn-primary:hover {
+    background-color:#64c583;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.728571;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    width: 200px;
+    height: 50px;
+    padding: 1em;
+}
+
+.btn-default {
+    border-radius: 0px;
+    background: #00296d;
+    color: #ededed;
+    border: 0;
+    padding: 12px 15px;
+    max-width:160px;
+    margin-top: 20px;
+}
+.btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open>.dropdown-toggle.btn-default {
+    color: #fff;
+    background-color: rgba(0, 173, 62, 0.75);
+    border-color:transparent;
+}
+
+.btn-outline-dark {
+    border : 1px solid black;
+}
+
+.input-lg, .form-group-lg .form-control {
+    height: 46px;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius:0;
+}
+.btn-lg, .btn-group-lg>.btn {
+    font-size: 18px;
+    line-height: 26px;
+    border-radius:0;
+    background: #0043af;
+    border: 0;
+    padding: 10px 25px;
+}
+.input-group button a i{
+    color:#fff;
+}
+
+/* product 페이지 버튼들 */
+.input-group-btn .btn,
+input.product-form {
+    border : 1px solid black;
+    height : 45px;
+    padding : 0px;
+}
+
+input#daterange {
+    border-radius: 3px;
+    display : block;
+    width : 250px;
+}
+
+
+/* 메인페이지 버튼 */
+.button-index{
+    border-radius: 3px;
+    background: #00296d;
+    padding: 12px 15px;
+    max-width:160px;
+    margin-top: 20px;
+    color : #fff;
+}
+
+.button-index a {
+    color : #fff;
+}
+
+.button-index:hover, .button-index:focus, .button-index.focus, .button-index:active, .button-index.active, .open>.dropdown-toggle.button-index {
+    background-color: rgba(0, 41, 109, 0.8);
+    border-color:transparent;
+    color : #fff;
+}
+
+.btn-login {
+    border : 1px solid #00296d;
+    border-radius : 15px;
+    padding : 3px 6px;
+    width : 70px;
+    height : 40px;
+    margin-top : 5px;
+/*    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.728571;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    height: 50px;
+    padding: 1em;*/
+}
+
+/*.btn-login:hover {
+    background-color : #00296d;
+    color : white;
+}*/
+
+.navbar-nav>li>.btn-login {
+    padding : 9px;
+}
+
+a.btn:hover, a.btn-login:hover{
+    background-color : #00296d;
+    color : white;
+}
+/****************** 버튼 끝 *****************/
+
+
+
+
+/* Extra height css */
+.margin-top-20 {
+    margin-top: 20px;
+}
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+.margin-top-40 {
+    margin-top: 40px;
+}
+.margin-bottom-40 {
+    margin-bottom: 40px;
+}
+.margin-top-60 {
+    margin-top: 60px;
+}
+.margin-80 {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+.margin-bottom-60 {
+    margin-bottom: 60px;
+}
+.margin-top-80 {
+    margin-top: 80px;
+}
+.margin-bottom-80 {
+    margin-bottom: 80px;
+}
+.padding-top-20 {
+    padding-top: 1.33rem;
+}
+.padding-bottom-20 {
+    padding-bottom: 1.33rem;
+}
+.padding-top-40 {
+    padding-top: 2.66rem;
+}
+.padding-bottom-40 {
+    padding-bottom: 2.66rem;
+}
+.padding-top-60 {
+    padding-top: 5rem;
+}
+.padding-bottom-60 {
+    padding-bottom: 5rem;
+}
+.padding-bottom-0 {
+    padding-bottom: 0;
+}
+/*padding*/
+.padding-twenty {
+    padding: 10px 0;
+}
+.padding-fourty {
+    padding: 20px 0;
+}
+.padding-sixty {
+    padding: 30px 0;
+}
+.padding-eighty {
+    padding: 40px 0;
+}
+h1 span {
+    color: #f56363;
+    font-weight: 400;
+}
+
+/* for placeholder changes */
+
+input::-webkit-input-placeholder {
+    color: #CACACA;
+    font-size: 12px;
+    padding-top:2px;
+}
+input::-moz-placeholder {
+    color: #CACACA;
+    font-size: 12px;
+    padding-top:2px;
+}
+input:-ms-input-placeholder {
+    color: #CACACA;
+    font-size: 12px;
+    padding-top:2px;
+}
+textarea::-webkit-input-placeholder
+{
+    color: #CACACA;
+    font-size: 12px;
+    padding-top:2px;
+
+}
+textarea::-moz-input-placeholder
+{
+    color: #CACACA;
+    font-size: 12px;
+    padding-top:2px;
+}
+textarea::-ms-input-placeholder
+{
+    color: #CACACA;
+    font-size: 12px;
+    padding-top:2px;
+}
+
+
+/*for image bg*/
+
+
+/*.img-bg{
+  background: url(../images/home-msg.jpg) no-repeat center top fixed;
+   background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  width: 100%;
+  overflow: hidden;
+}*/
+
+/*For Our Global CSS*/
+.heading-content h1{
+    font-size:48px;
+    margin-bottom:40px;
+}
+
+/*For Footer Section*/
+.footer{
+    background: #706f72;
+    color : white;
+    padding : 2em 0;
+    color:#fff;
+}
+
+/********** 공통 부분 *********/
+/* 메뉴 */
+#menu {
+      position: fixed;
+    padding: 20px;
+    transition: all 0.8s;
+}
+#menu.navbar-default {
+    /* 배경 색상 */
+    background-color: #fff;
+    border-color: rgba(231, 231, 231, 0);
+}
+
+/*!* 메뉴바 높이 줄어듦 *!*/
+/*.on {*/
+    /*background-color: #fff !important;*/
+    /*padding: 0 !important;*/
+/*}*/
+
+
+
+.navbar-default {
+    background-color: transparent;
+    border-color: transparent;
+    border-radius:0;
+    padding-top:20px;
+    padding-bottom:20px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
+    z-index:1001;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    color: #0043af;
+    background-color:transparent;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #000; /* 메뉴바 글씨 색상 */
+    font-size:14px;
+    font-weight:600;
+    text-transform:uppercase;
+}
+.navbar-default .navbar-nav li a :hover{
+    color: #0043af;
+        border-bottom : 1px solid #0043af;
+}
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color: #0043af;
+        border-bottom : 1px solid #0043af;
+    background-color: transparent;
+}
+.navbar-brand{
+    margin-top:-5px;
+}
+
+.dropdown-menu>li>a{
+    line-height: 4;
+}
+.dropdown:hover .dropdown-menu {
+    display : block;
+}
+/* 로그인 버튼 */
+.navbar-default .navbar-nav>li>a.btn-login:hover, .navbar-default .navbar-nav>li>a.btn-login:focus {
+    color: #fff;
+    background-color : #00296d;
+}
+
+
+/* 스크롤 버튼 */
+.scrollup {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    opacity: .3;
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #000;
+    z-index: 10;
+    transition: opacity .5s, background-color .5s;
+    -moz-transition: opacity .5s, background-color .5s;
+    -webkit-transition: opacity .5s, background-color .5s;
+}
+.scrollup:hover {
+    background: #0043af;
+    opacity: 1;
+}
+.scrollup i {
+    font-size: 13px;
+    position: absolute;
+    opacity: 1;
+    color: #fff;
+    left: 50%;
+    top: 50%;
+    margin-top: -7px;
+    margin-left: -6px;
+    text-decoration: none;
+}
+
+/*********** 공통 부분 끝 ********/
+
+
+
+
+/*********** 여기서부터 메인 인덱스 ************/
+/* 메인페이지 이미지 슬라이드 */
+.home{
+    background:url("../img/team/homebg1.jpg") no-repeat center center;
+    color:#000;
+    padding-top : 90px;
+	background-size:cover;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	-ms-background-size:cover;
+}
+.home-wrapper{
+    padding:150px 0px;
+    overflow:hidden;
+}
+.home-content h1{
+    font-size:48px;
+    font-weight:700;
+    margin-bottom: 30px;
+    color: #fff;
+}
+.home-content p{
+    margin-bottom: 30px;
+    color: #fff;
+}
+.home-content .home-contact{
+    margin-top: 90px;
+}
+
+.home-contact .input-group{display: block;}
+.home-content .input-group .form-control {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 65%;
+    margin-bottom: 0;
+    height: 60px;
+
+}
+.home-content .home-contact input[type="text"]{
+    color:#0043af;
+}
+.home-content .home-contact input[type="submit"]{
+    display:inline-block;
+    width:35%;
+    background:#0043af;
+    color:#fff;
+	border: 0px;
+}
+.home-content .home-contact input[type="submit"]:hover{
+	background-color: rgba(0, 173, 62, 0.75);
+}
+.home-contact p{
+    margin-top: 20px;
+    color:#000;
+    font-size:15px;
+}
+.form-control {
+    border: 1px solid #DEDEDE;
+    height:45px;
+    border-radius: 0px;
+    margin-right: -3px;
+}
+.head_title {
+    margin-bottom: 40px;
+}
+.head_title p {
+    max-width: 55%;
+    margin: 10px auto;
+    padding-bottom: 20px;
+}
+
+h1.index-title {
+    color : #fff;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size : 3.2rem;
+    font-weight : 900;
+    letter-spacing : 2px;
+}
+a.learn-btn {
+    background : transparent;
+    border : 1px solid #fff;
+    margin-top : 40px;
+}
+a.learn-btn:focus, a.learn-btn.focus, a.learn-btn:active, a.learn-btn.active{
+    background : transparent;
+    border : 1px solid #fff;
+    margin-top : 40px;
+}
+
+a.try-btn {
+    background : #00296d;
+    border : 1px solid #00296d;
+    color : #00296d;
+}
+h2.top-title {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight : 900;
+}
+/* 메인인덱스데이터 분석,수집,시각화 부분 */
+
+/* prodcut 페이지 이미지 */
+.single_features_left img{
+    height:300px;
+    display:block;
+    margin-left:300px;
+}
+
+.single_features_middle img {
+    width : 150px;
+    margin-bottom : 10px;
+}
+.single_features_right {
+    margin-top:10%;
+}
+
+.single_features_right h2 {
+	margin-bottom: 40px;
+    font-size:40px;
+    color:#222222;
+}
+
+.single_features_right p{
+    font-size:18px;
+}
+.single_features_right ul li{
+    font-size:18px;
+    margin-top:3%;
+}
+
+.team-introduce {
+    padding-top : 5px;
+    padding-bottom : 2px;
+}
+
+.team-title {
+    margin-bottom : 0px;
+}
+
+img.work-img {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width : 500px;
+}
+
+div.readmore {
+    font-weight : 1000;
+    margin-top :10px;
+}
+
+/*********** 메인 인덱스 끝 ************/
+
+
+/************ product 페이지 ************/
+a#detailbtn {
+    padding : 5px;
+    width : 120px;
+    height : 30px;
+}
+a#detailbtn:hover {
+    background-color : #fff;
+    color : #000;
+}
+img.loading-gif {
+    margin-top :  25px;
+}
+div.collect-btn {
+    margin-top : 20px;
+}
+/************ product 페이지 끝 ************/
+
+/************ 분석 페이지 ************/
+.panel{
+    border : 1px solid black;
+}
+
+.panel-heading {
+    border-bottom : 1px solid black;
+}
+
+.panel-body {
+  height: 800px;
+}
+
+div.body-visual {
+    padding : 0px;
+}
+label.korean-text{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight : 300;
+}
+
+.modal-body {
+    padding-bottom : 0px;
+}
+svg.highcharts-root {
+    width: 450px;
+    margin-top: -30px;
+}
+/************ 분석 페이지 끝 ************/
+
+/************ 로그인&가입 페이지 ************/
+.login-panel, .signup-panel {
+    border : 1px solid #c6c6c6;
+}
+.login-submit-btn {
+    width : 100px;
+    height : 35px;
+    padding : 5px;
+    background: #337ab7;
+
+}
+.login-submit-btn:hover {
+    background-color: #00296d;
+    border : 1px solid #00296d;
+}
+.signup-submit-btn:hover {
+    background-color: #00296d;
+    border : 1px solid #00296d;
+}
+#login-body {
+    height : 260px;
+}
+#signup-body {
+  height: 370px;
+}
+/************ 로그인&가입 페이지 끝 ************/
+
+
+#register-link {
+  margin-top: -85px;
+}
+
+/***** admin 페이지 nav-tab! *****/
+.tabs {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+#tab-button {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#tab-button li {
+  display: table-cell;
+  width: 20%;
+}
+#tab-button li a {
+  display: block;
+  padding: .5em;
+  background: #eee; /* tab 배경 색상 여기서 바꾸세요 */
+  border: 1px solid #ddd;
+  text-align: center;
+  color: #000;
+  text-decoration: none;
+}
+#tab-button li:not(:first-child) a {
+  border-left: none;
+}
+#tab-button li a:hover,
+#tab-button .is-active a {
+  border-bottom-color: transparent;
+  background: #fff;
+}
+.tab-contents {
+  padding: .5em 2em 1em;
+  border: 1px solid #ddd;
+}
+
+
+
+.tab-button-outer {
+  display: none;
+}
+.tab-contents {
+  margin-top: 20px;
+}
+@media screen and (min-width: 768px) {
+  .tab-button-outer {
+    position: relative;
+    z-index: 2;
+    display: block;
+  }
+  .tab-select-outer {
+    display: none;
+  }
+  .tab-contents {
+    position: relative;
+    top: -1px;
+    margin-top: 0;
+  }
+}
+/***** admin 페이지 nav-tab 끝 *****/

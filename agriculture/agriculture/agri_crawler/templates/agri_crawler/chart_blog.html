@@ -1,0 +1,219 @@
+<!doctype html>
+{% load staticfiles %}
+
+  <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Big Data</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/boot1.css'%}">
+        <link rel="stylesheet" href="{% static 'css/mola.css' %}">
+        <link rel="stylesheet" href="{% static 'css2/datepicker.min.css' %}" rel ="stylesheet">
+        <!--        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">-->
+        <link rel="stylesheet" href="{% static 'DataTables/datatables.min.css' %}"/>
+        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+        <!-- 외부 css-->
+        <link rel="stylesheet" href="{% static 'css/plugins.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/roboto-webfont.css' %}" />
+        <link rel="stylesheet" href="{% static 'css2/jinhyun.css' %}" />
+        <!-- 메인 css -->
+        <link rel="stylesheet" href="{% static 'css2/style.css' %}">
+
+        <link rel="stylesheet" href="{% static 'css2/responsive.css' %}">
+        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>-->
+        <!-- 반응형 css-->
+        <link rel="stylesheet" href="{% static 'css2/responsive.css' %}" />
+         <style>
+         .panel-body{
+         height:600px;
+         }
+     </style>
+    </head>
+
+    <body>
+
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Sections -->
+        <nav id="menu" class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <!-- 모바일에서 toggle -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/team/logo1.png' %}" alt="Logo" /></a>
+                </div>
+
+               <!-- nav 메뉴 toggling -->
+                <div class="collapse navbar-collapse shs-nav" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">PRODUCT</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'product' %}">Collect</a></li>
+                                <li><a href="{% url 'product' %}">Analysis</a></li>
+                                <li><a href="{% url 'product' %}">Visualization</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'index' %}">TEAM</a></li>
+                        <li><a href="{% url 'index' %}">CONTACT</a></li>
+                        {% if request.session.username %}
+                         <li class="dropdown">
+                           <a href="#whatwedo" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">{{request.session.username}}</a>
+                           <ul class="dropdown-menu">
+                            <form action="{% url 'bloglist' %}" method="POST" class="dropdown-item">
+                              {% csrf_token %}
+                             <input type="hidden" name="User" value={{request.session.username}}>
+                             <li><input type="submit" class="btn btn-success"value="블로그"></li>
+                            </form>
+                            <form action="{% url 'newslist' %}" method="POST">
+                             {% csrf_token %}
+                             <input type="hidden" name="User" value={{request.session.username}}>
+                             <li><input type="submit" class="btn btn-info" value="뉴스"></li>
+                            </form>
+                                 <form action="{% url 'twitterlist' %}" method="POST">
+                                 {% csrf_token %}
+                                 <input type="hidden" name="User" value={{request.session.username}}>
+                                 <li><input type="submit" class="btn btn-warning" value="트위터"></li>
+                             </form>
+                            <form action="{% url 'alllist' %}" method="POST">
+                             {% csrf_token %}
+                            <input type="hidden" name="User" value={{request.session.username}}>
+                            <li><input type="submit" class="btn btn-danger" value="전체"></li>
+                            </form>
+                           </ul>
+                        </li>
+
+                        <li><a href="{% url 'logout' %}" role="button" class="btn btn-login">LOGOUT</a></li>
+                          {% elif request.session.admin %}
+                        <li><a href="{% url 'admin' %}">admin</a></li>
+                        <li><a href="{% url 'logout'%}" role="button" class="btn btn-login">LOGOUT</a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}" role="button" class="btn btn-login">LOGIN</a></li>
+                        {% endif %}
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <!-- Sections -->
+        <section id="features" class="features sections2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4">
+                    <h2 class="text-center jinhyun_p">{{request.session.username}}님 수집 결과 </h2>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div>
+
+        </div>
+        <!-- 데이터 분석 -->
+        <section id="features" class="features sections2 data-solution">
+            <div class="container">
+                <div class="row">
+                    <div class="main_features_content2">
+                        <div class="col-sm-6">
+                            <div class="panel">
+                                <div class="panel-heading text-center">원 그래프</div>
+                                <div class="panel-body text-center body-visual">           <div id="container" style="width: 550px; height: 400px; margin: 0 auto"></div></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="panel">
+                                <div class="panel-heading text-center">막대 그래프</div>
+                                <div class="panel-body text-center body-visual">  <div id="secondchart" style="width: 550px; height: 400px; margin: 0 auto"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+  <h4><script type="text/javascript">
+
+                        </script>(기사)가 검색된 총 횟수는 <script type="text/javascript">
+
+                        </script>입니다.</h4>
+        </section> <!-- 원 그래프 끝 -->
+        <section id="features"  class="features sections2">
+            <div class="container">
+                <div class="row">
+                    <div class="main_features_content2">
+                        <div class="col-sm-12">
+                            <div class="panel">
+                                <div class="panel-heading">Data</div>
+                                <div class="panel-body" style="overflow:auto">
+                                    <div>
+                                          {% csrf_token %}
+                                        <table class="table table-hover text-center scrolltable">
+
+                                        <thead>
+                                        <th style="width : 15%">매체</th>
+                                        <th style="width : 70%">제목</th>
+                                        <th style="width : 15%">날짜</th>
+                                        </thead>
+                                        <tbody>
+                                         {% for results in result %}
+                                           {% for e in results %}
+                                        <tr>
+                                        <td>
+                                          {{e.sub_body.media}}
+                                        </td>
+                                        <td>
+                                          {{e.sub_body.main_title}}
+                                        </td>
+                                        <td>
+                                          {{e.sub_body.datetime}}
+                                        </td>
+                                        </tr>
+                                        {% endfor %}
+                                       {% endfor %}
+                                        </tbody>
+                                        </table>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> <!-- 뉴스 데이터 끝 -->
+
+        <!--Footer-->
+        <footer id="footer" class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-wrapper">
+                        <div class="col-md-12 text-center">
+                            <small id="footer-text">&copy; Copyright 2018, All Rights Reserved.</small>
+                            <small>실험실인턴십 송진현 김은경 고석빈</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+		<div class="scrollup">
+			<a href="#"><i class="fa fa-chevron-up"></i></a>
+		</div>
+
+        <script src="{% static 'js/vendor/jquery-1.11.2.min.js' %}"></script>
+        <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+
+        <script src="{% static 'js/plugins.js' %}"></script>
+        <script src="{% static 'js/modernizr.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/main2.js' %}"></script>
+        <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+
+    </body>
+</html>

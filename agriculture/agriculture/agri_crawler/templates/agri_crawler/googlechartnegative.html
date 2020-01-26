@@ -1,0 +1,101 @@
+{% load staticfiles %}
+<html>
+<head>
+
+<meta http-equiv="content-type"  content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="{% static 'css2/roboto-webfont.css' %}">
+<link rel="stylesheet" href="{% static 'css/mola.css' %}" />
+<link rel="stylesheet" href="{% static 'css2/plugins.css' %}" />
+<link rel="stylesheet" href="{% static 'css2/style.css' %}">
+<link rel="stylesheet" href="{% static 'css2/common.css' %}">
+        <!--Theme custom css -->
+<link rel="stylesheet" href="{% static 'css2/style.css' %}">
+        <!--Theme Responsive css-->
+<link rel="stylesheet" href="{% static 'css2/responsive.css' %}" />
+<link rel="stylesheet" href="{% static 'css2/googlechartnegative.css' %}"/>
+                <!-- 폰트 -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+<script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css2/bootstrap.min.css'%}">
+<title>googlechart</title>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+ // Load the Visualization API and the corechart package.
+ // Visualization API 및 corechart 패키지를 로드합니다.
+ google.charts.load('current',{'packages':['corechart']});
+ google.charts.setOnLoadCallback(drawChart);
+ 
+ function drawChart(){
+  var data = new google.visualization.DataTable();
+  data.addColumn('string','Topping');
+  data.addColumn('number','Slices');
+  data.addRows([
+  ['positive', {{data.positive}}],
+  ['negetive', {{data.negative}}],
+  ['neutral', {{data.neutral}}]
+  ]);
+  var options = {'title':'긍정 부정 단어 비율', 'width':1000, 'height':500};
+  var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+  chart.draw(data, options); 
+}
+ google.charts.load('current', {packages:["corechart"]});
+ google.charts.setOnLoadCallback(drawBar);
+ function drawBar(){
+  var data= google.visualization.arrayToDataTable([
+  ['total','positive', 'negative', 'neutral'],
+  ['total',{{data.positive}},{{data.negative}},{{data.neutral}}]
+ ]);
+  var options= {title:'긍정 부정 단어 비율', isStacked:true};
+  var chart = new google.visualization.BarChart(document.getElementById('chart_bar'));
+ chart.draw(data, options);
+ }
+ google.charts.setOnLoadCallback(drawBar);
+</script>
+</head>
+<body data-spy="scroll" data-target=".navbar-fixed-top">
+ <nav id="menu" class="navbar navbar-default navbar-fixed-top shs-nav">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/team/logo1.png' %}" alt="Logo" /></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse shs-nav" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'index' %}">SERVICE</a></li>
+                        <li class="dropdown">
+                            <a href="{% url 'product' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">PRODUCT</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'product' %}">Collect</a></li>
+                                <li><a href="{% url 'product' %}">Analysis</a></li>
+                                <li><a href="{% url 'product' %}">Visualization</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'index' %}">TEAM</a></li>
+                        <li><a href="{% url 'index' %}">CONTACT</a></li>
+                         {% if request.session %}
+                        <li><a href="">{{request.session.username}}</a></li>
+                        <li><a href="{% url 'logout'%}" role="button" class="btn btn-login">LOGOUT</a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}" role="button" class="btn btn-login">LOGIN</a></li>
+                        {% endif %}
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+<div class="next row">
+  <p class="text-center p_next"><b>{{request.session.username}}</b>님의 <b>{{data.kw}}</b>기사의 긍/부정 비율입니다.</p>
+  <div class="text-center container col-sm-5" id="chart_div"></div>
+  <div class="container col-sm-5" id="chart_bar" style="width:800px; height:400px;"></div>
+</div>
+</body>
+</html>

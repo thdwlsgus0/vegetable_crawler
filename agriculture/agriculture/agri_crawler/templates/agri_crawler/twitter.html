@@ -1,0 +1,217 @@
+
+{% load staticfiles %}
+<!doctype html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Big Data</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/boot1.css'%}">
+        <link rel="stylesheet" href="{% static 'css/mola.css' %}">
+        <link rel="stylesheet" href="{% static 'css2/datepicker.min.css' %}" rel ="stylesheet">
+        <!--        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">-->
+        <link rel="stylesheet" href="{% static 'DataTables/datatables.min.css' %}"/>
+        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+        <!-- 외부 css-->
+        <link rel="stylesheet" href="{% static 'css/plugins.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/roboto-webfont.css' %}" />
+        <link rel="stylesheet" href="{% static 'css2/jinhyun.css' %}" />
+        <!-- 메인 css -->
+        <link rel="stylesheet" href="{% static 'css2/style.css' %}">
+
+        <link rel="stylesheet" href="{% static 'css2/responsive.css' %}">
+        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>-->
+        <!-- 반응형 css-->
+        <link rel="stylesheet" href="{% static 'css2/responsive.css' %}" />
+     <style>
+         .panel-body{
+         height:600px;
+         }
+     </style>
+    </head>
+
+    <body>
+
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Sections -->
+        <nav id="menu" class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <!-- 모바일에서 toggle -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/team/logo1.png' %}" alt="Logo" /></a>
+                </div>
+
+               <!-- nav 메뉴 toggling -->
+                <div class="collapse navbar-collapse shs-nav" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">PRODUCT</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'product' %}">Collect</a></li>
+                                <li><a href="{% url 'product' %}">Analysis</a></li>
+                                <li><a href="{% url 'product' %}">Visualization</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'index' %}">TEAM</a></li>
+                        <li><a href="{% url 'index' %}">CONTACT</a></li>
+                        {% if request.session.username %}
+                         <li class="dropdown">
+                           <a href="#whatwedo" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">{{request.session.username}}</a>
+                           <ul class="dropdown-menu">
+                            <form action="{% url 'bloglist' %}" method="POST" class="dropdown-item">
+                              {% csrf_token %}
+                             <input type="hidden" name="User" value={{request.session.username}}>
+                             <li><input type="submit" class="btn btn-success"value="블로그"></li>
+                            </form>
+                            <form action="{% url 'newslist' %}" method="POST">
+                             {% csrf_token %}
+                             <input type="hidden" name="User" value={{request.session.username}}>
+                             <li><input type="submit" class="btn btn-info" value="뉴스"></li>
+                            </form>
+                                 <form action="{% url 'twitterlist' %}" method="POST">
+                                 {% csrf_token %}
+                                 <input type="hidden" name="User" value={{request.session.username}}>
+                                 <li><input type="submit" class="btn btn-warning" value="트위터"></li>
+                             </form>
+                            <form action="{% url 'alllist' %}" method="POST">
+                             {% csrf_token %}
+                            <input type="hidden" name="User" value={{request.session.username}}>
+                            <li><input type="submit" class="btn btn-danger" value="전체"></li>
+                            </form>
+                           </ul>
+                        </li>
+
+                        <li><a href="{% url 'logout' %}" role="button" class="btn btn-login">LOGOUT</a></li>
+                          {% elif request.session.admin %}
+                        <li><a href="{% url 'admin' %}">admin</a></li>
+                        <li><a href="{% url 'logout'%}" role="button" class="btn btn-login">LOGOUT</a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}" role="button" class="btn btn-login">LOGIN</a></li>
+                        {% endif %}
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+        <!-- Sections -->
+        <section id="features" class="features sections">
+            <div class="container">
+                <div class="col-md-4 col-md-offset-4">
+                    {% if request.session.username %}
+
+                    <pre class="text-center" style="font-size:20px;">{{request.session.username}}님 데이터 수집 현황</pre>
+                     <p class="text-center jinhyun"><b>트위터 수집 현황</b></p>
+                   {% endif %}
+                </div>
+                <div class="row">
+                    <div class="main_features_content2">
+                        <div class="col-sm-12">
+                            <div class="panel ing-panel">
+                                <div class="panel-body">
+                                    <table class="table table-hover table-striped" id="myTable">
+                                        <thead>
+                                        <tr>
+                                            <th style="width : 10%">번호</th>
+                                            <th style="width : 20%">수집단어</th>
+                                            <th style="width : 30%">기간</th>
+                                            <th style="width : 20%">수집 날짜</th>
+                                            <th style="width : 15%">상태</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                         {% for wait in waiting %}
+                                        <tr>
+                                            <td>{{forloop.counter}}</td>
+                                            <td>{{wait.keyword}}</td>
+                                            <td>{{wait.start_date}}~{{wait.end_date}}</td>
+                                            <td>{{wait.today_date}}</td>
+                                            <td>
+
+                                               {% if wait.state < "1" %}
+                                           <p id={{wait.id}}>수집중</p>
+                                            <!--<input type="hidden" href="#" class="btn btn-success" id={{wait.id}} onclick="data({{wait.id}}, {{condition}})" value="수집전"></td>    -->
+                                               {% else %}
+
+                                            <button class="btn btn-info">수집 결과</button>
+                                         <!--   <input type="button" href="#" id={{wait.id}} onclick="data({{wait.id}},{{condition}})" class="collecting btn btn-success" value="이미 수집이 완료되었습니다">-->
+                                               {% endif %}
+                                               <input type="hidden" name="naver" id="naver"value={{data.naver_blog}}>
+                                               <input type="hidden" name="daum" id="daum" value={{data.daum_blog}}>
+                                               <input type="hidden" name="text1" id="text1" value={{data.text1}}>
+                                               <input type="hidden" name="start_date" id="start_date" value={{data.start_date}}>
+                                               <input type="hidden" name="end_date" id="end_date" value={{data.end_date}}>
+                                               <input type="hidden" name="t" id="t" value={{data.title}}>
+                                               <input type="hidden" name="d" id="d" value={{data.date}}>
+                                               <input type="hidden" name="k" id="k" value={{data.keyword}}>
+                                               <input type="hidden" name="b" id="b" value={{data.body}}>
+                                               <input type="hidden" name="e" id="e" value={{data.emoticon}}>
+                                               <input type="hidden" name="c" id="c" value={{data.comment}}>
+                                               <input type="hidden" name="r" id="r" value={{data.recommend}}>
+                                               <!--<input type="submit" class="collecting btn btn-success" value="수집전">-->
+
+                                        </tr>
+                                     {% endfor %}
+                                        </tbody>
+                                    </table>
+
+                                    <!-- 페이징 처리 여기서 하기! -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> <!-- 수집창 보여주기 -->
+
+        <!-- Footer -->
+        <footer id="footer" class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-wrapper">
+                        <div class="col-md-12 text-center">
+                            <small id="footer-text">&copy; Copyright 2018, All Rights Reserved.</small>
+                            <small>실험실인턴십 송진현 김은경 고석빈</small>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+		<div class="scrollup">
+			<a href="#"><i class="fa fa-chevron-up"></i></a>
+		</div>
+        <script src="{% static 'js/vendor/jquery-1.11.2.min.js' %}"></script>
+        <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="{% static 'js/plugins.js' %}"></script>
+        <script src="{% static 'js/modernizr.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+        <script>
+
+        </script>
+    <script>
+         $(document).ready(function() {
+    $('#myTable').DataTable();
+});
+     </script>
+    <script type="text/javascript" src="{% static 'DataTables/datatables.min.js' %}"></script>
+    </body>
+</html>

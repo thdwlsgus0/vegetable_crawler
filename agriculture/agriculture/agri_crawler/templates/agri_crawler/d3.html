@@ -1,0 +1,277 @@
+<!doctype html>
+{% load staticfiles %}
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Big Data</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="stylesheet" href="{% static 'css2/bootstrap.min.css'%}">
+        <link rel="stylesheet" href="{% static 'css/boot1.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/mola.css' %}" />
+        <!--        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">-->
+        <link rel="stylesheet" href="{% static 'css2/datepicker.min.css' %}"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+        <!--<link rel="stylesheet" href="{% static 'css2/jinhyun.css' %}">-->
+        <!--For Plugins external css-->
+        <link rel="stylesheet" href="{% static 'css2/roboto-webfont.css' %}">
+        <link rel="stylesheet" href="{% static 'css/mola.css' %}" />
+        <link rel="stylesheet" href="{% static 'css2/plugins.css' %}" />
+        <link rel="stylesheet" href="{% static 'css2/common.css' %}">
+        <link rel="stylesheet" href="{% static 'DataTables/datatables.min.css' %}"/>
+
+        <!--Theme custom css -->
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css2/style.css' %}">
+
+        <!--Theme Responsive css-->
+        <link rel="stylesheet" href="{% static 'css2/responsive.css' %}" />
+
+                <!-- 폰트 -->
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+        <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+       <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+        <!--<script src="https://maxcdn.bootstrap.com/boostrap/3.3.7/js/bootstrap.min.js"></script>-->
+          <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    </head>
+    <body data-spy="scroll" data-target=".navbar"  data-offset="50">
+        <!--[if lt IE 8]>
+
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+		<!-- 메뉴 -->
+        <nav id="menu" class="navbar navbar-default navbar-fixed-top shs-nav">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/team/logo1.png' %}" alt="Logo" /></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse shs-nav" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#home">Home</a></li>
+                        <li><a href="#service">SERVICE</a></li>
+
+                        <li class="dropdown">
+                            <a href="#whatwedo" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">PRODUCT</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'product' %}">Collect</a></li>
+                                <li><a href="{% url 'product' %}">Analysis</a></li>
+                                <li><a href="{% url 'product' %}">Visualization</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#team">TEAM</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+                         {% if request.session.username %}
+                         <li class="dropdown">
+                          <a href="#whatwedo" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">{{request.session.username}}</a>
+                         <ul class="dropdown-menu">
+                          <form action="{% url 'bloglist' %}" method="POST">
+                            {% csrf_token %}
+                           <input type="hidden" name="User" value={{request.session.username}}>
+                           <li><input type="submit" class="btn btn-success"value="블로그"></li>
+                          </form>
+                          <form action="{% url 'newslist' %}" method="POST">
+                           {% csrf_token %}
+                           <input type="hidden" name="User" value={{request.session.username}}>
+                           <li><input type="submit" class="btn btn-info" value="뉴스"></li>
+                          </form>
+                             <form action="{% url 'twitterlist' %}" method="POST">
+                                 {% csrf_token %}
+                                 <input type="hidden" name="User" value={{request.session.username}}>
+                                 <li><input type="submit" class="btn btn-warning" value="트위터"></li>
+                             </form>
+                          <form action="{% url 'alllist' %}" method="POST">
+                            {% csrf_token %}
+                           <input type="hidden" name="User" value={{request.session.username}}>
+                          <li><input type="submit" class="btn btn-danger" value="전체"></li>
+                          </form>
+                         </ul>
+                         </li>
+                        <li><a href="{% url 'logout'%}" role="button" class="btn btn-login">LOGOUT</a></li>
+                        {% elif request.session.admin %}
+                        <li><a href="{% url 'admin' %}">admin</a></li>
+                        <li><a href="{% url 'logout'%}" role="button" class="btn btn-login">LOGOUT</a></li>
+                        {% else %}
+                        <li><a href="{% url 'login' %}" role="button" class="btn btn-login">LOGIN</a></li>
+                        {% endif %}
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+        <!--Home page style-->
+        <header id="home" class="home">
+            <div class="overlay-fluid-block">
+                <div class="container text-center">
+                    <div class="row" id="home">
+                        <div class="home-wrapper">
+                          <div class="col-md-12 col-sm-12 learnmore">
+                            <h1 class="index-title">BIG DATA SOLUTION</h1>
+                            <a href="#" class="btn btn-lg btn-default smoothScroll fadeInUp hidden-xs learn-btn" data-wow-delay="2.3s">LEARN MORE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- 여기서부터 관리자 페이지 -->
+
+        <div id="container" style="min-width:510px; height: 700px; max-width: 600px; margin: 0 auto"></div>
+                                      <script>
+          // Radialize the colors
+          var keylength = {{keys|length}};
+          var valueElements = {{values}};
+          var keyElements = {{keys|safe}};
+
+
+Highcharts.setOptions({
+  colors: Highcharts.map(Highcharts.getOptions().colors, function (color) {
+    return {
+      radialGradient: {
+        cx: 0.5,
+        cy: 0.3,
+        r: 0.7
+      },
+      stops: [
+        [0, color],
+        [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+      ]
+    };
+  })
+});
+
+// Build the chart
+Highcharts.chart('container', {
+  chart: {
+    plotBackgroundColor: null,
+    plotBorderWidth: null,
+    plotShadow: false,
+    type: 'pie'
+  },
+  title: {
+    text: '단어 현황'
+  },
+  tooltip: {
+    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+  },
+  plotOptions: {
+    pie: {
+      allowPointSelect: true,
+      cursor: 'pointer',
+      dataLabels: {
+        enabled: true,
+        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+        style: {
+          color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+        },
+        connectorColor: 'silver'
+      }
+    }
+  },
+  series: [{
+    name: 'Share',
+    data: [
+      { name: keyElements[0], y:valueElements[0]},
+      { name: keyElements[1], y:valueElements[1]},
+      { name: keyElements[2], y:valueElements[2]},
+      { name: keyElements[3], y:valueElements[3]},
+      { name: keyElements[4], y:valueElements[4]},
+      { name: keyElements[5], y:valueElements[5]},
+      { name: keyElements[6], y:valueElements[6]},
+      { name: keyElements[7], y:valueElements[7]},
+      { name: keyElements[8], y:valueElements[8]},
+      { name: keyElements[9], y:valueElements[9]}
+    ]
+  }]
+});
+</script>
+
+
+        <!--Footer-->
+        <footer id="footer" class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-wrapper">
+                        <div class="col-md-12 text-center">
+                            <small id="footer-text">&copy; Copyright 2018, All Rights Reserved.</small>
+                            <small>실험실인턴십 송진현 김은경 고석빈</small>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+		<div class="scrollup">
+			<a href="#"><i class="fa fa-chevron-up"></i></a>
+		</div>
+        <script src="{% static 'js/vendor/jquery-1.11.2.min.js' %}"></script>
+        <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="{% static 'js/plugins.js' %}"></script>
+        <script src="{% static 'js/modernizr.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/main2.js' %}"></script>
+
+        <script type="text/javascript" src="{% static 'DataTables/datatables.min.js' %}"></script>
+        <script>
+            $(document).ready(function() {
+     $('#myTable').DataTable();
+        });
+        </script>
+
+        <script>
+            //여기서부터 tab (admin 페이지)
+$(function() {
+  var $tabButtonItem = $('#tab-button li'),
+      $tabSelect = $('#tab-select'),
+      $tabContents = $('.tab-contents'),
+      activeClass = 'is-active';
+
+  $tabButtonItem.first().addClass(activeClass);
+  $tabContents.not(':first').hide();
+
+  $tabButtonItem.find('a').on('click', function(e) {
+    var target = $(this).attr('href');
+
+    $tabButtonItem.removeClass(activeClass);
+    $(this).parent().addClass(activeClass);
+    $tabSelect.val(target);
+    $tabContents.hide();
+    $(target).show();
+    e.preventDefault();
+  });
+
+  $tabSelect.on('change', function() {
+    var target = $(this).val(),
+        targetSelectNum = $(this).prop('selectedIndex');
+
+    $tabButtonItem.removeClass(activeClass);
+    $tabButtonItem.eq(targetSelectNum).addClass(activeClass);
+    $tabContents.hide();
+    $(target).show();
+  });
+});
+        </script>
+    </body>
+</html>

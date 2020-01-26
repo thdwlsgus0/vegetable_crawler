@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+   <head>
+      <!-- Required meta tags -->
+        <meta charset="utf-8">   
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Big Data</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="{% static 'css2/bootstrap.min.css'%}">
+       
+        <link rel="stylesheet" href="{% static 'css/plugins.css'%}" />
+        <link rel="stylesheet" href="{% static 'css/roboto-webfont.css'%}" />
+
+
+        <link rel="stylesheet" href="{% static 'css/style.css'%}">
+
+        <link rel="stylesheet" href="{% static 'css/responsive.css'%}" />
+
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+
+        <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'%}"></script>
+   </head>
+   <body>
+        <nav id="menu" class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/team/logo.png'%}" alt="Logo" /></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse shs-nav" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="#service">SERVICE</a></li>
+                        <li class="dropdown">
+                            <a href="#whatwedo" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">PRODUCT</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'product' %}">Collect</a></li>
+                                <li><a href="product.html">Analysis</a></li>
+                                <li><a href="product.html">Visualization</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#team">TEAM</a></li>
+                        <li><a href="{% url 'index' %}">CONTACT</a></li>
+                        <li><a href="{% url 'login' %}" role="button" class="btn btn-login">LOGIN</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <section class="features sections">
+          <div class="container">
+             <div class="card-deck my-4">
+                <div id="card1" class="card border-info text-center">
+                   <div class="card-body">
+                      <h5 class="card-title">1. Upload the file to system (.xlsx, .xls, .txt, .csv)</h5>
+                      <p class="card-text text-info">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <form action="{% url 'basic_upload' %}"  method="post" enctype="multipart/form-data" id="js-upload-form" name="csv_form" id="csv_form" >                          {% csrf_token%}
+                         <div class="text-center">
+                            <div class="form-group">
+                               <input id="fileupload" type="file" name="file" data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}' class="btn btn-outline-info js-upload" value="Upload file">                     
+                              <input type="submit">
+                             </div>
+                         </div>
+                      </form>
+                   </div>
+                </div>
+                <div id="card2" class="card border-info text-center disabled-everything">
+                   <div class="card-body">
+                      <h5 class="card-title">2. Apply <i>k</i>-NN to the input dataset</h5>
+                      <p class="card-text text-info">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <div class="input-group mb-3">
+                        <input id="nclust" type="text" class="form-control" placeholder="Number of Clusters" aria-describedby="basic-addon2" onkeypress="return isNumberKey(event)"/>
+                        <div class="input-group-append">
+                          <button id="knn" class="btn btn-outline-info">Apply KNN</button>
+                        </div>
+                      </div>
+                      
+                   </div>
+                </div>
+                <div id="card3" class="card border-info text-center disabled-everything">
+                   <div class="card-body">
+                      <h5 class="card-title">3. Download the resulting dataset</h5>
+                      <p class="card-text text-info">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="" id="downloadresult" class="btn btn-outline-info">Download Result</a>
+                   </div>
+                </div>
+             </div>
+             <div class="visual">
+		 <h2 class="text-center"> 시각화 결과 </h2>
+             <div class="ee" style="display:inline;">
+              <img src="{% static 'img/sine_wave_plot.png'%}" width="500px;" height="500px;"> 
+             </div> 
+             <div class="ee1" style="display:inline;">
+               <img src="{% static 'img/sine_wave_plot1.png'%}" width="500px;" height="500px;">
+             </div>
+             </div>
+             <div id="table-responsive1" class="text-center" hidden>
+                <table id="sample-table" class="table table-bordered">
+                </table>
+             </div>
+             <div id="accordion1" class="accordion" hidden>
+                <div class="card mb-0">
+                   <div class="card-header collapsed" data-toggle="collapse" href="#collapseOne">
+                      <a class="card-title">
+                      <h5>Centroids</h5>
+                      </a>
+                      <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                      </p>
+                   </div>
+                   <div id="collapseOne" class="card-body collapse" data-parent="#accordion" >
+                      <div id="table-responsive2" class="text-center">
+                         <table id="sky-table" class="table table-bordered">
+                         </table>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             <div id="accordion2" class="accordion" hidden>
+                <div class="card mb-0">
+                   <div class="card-header collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                      <a class="card-title">
+                      <h5>Graph</h5>
+                      </a>
+                      <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
+                      </p>
+                   </div>
+                   <div id="collapseTwo" class="card-body collapse" data-parent="#accordion">
+                      <div id="outgraph" class="row" >
+                         <div id="graph"></div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+        </section>
+      
+      <!--Footer-->
+        <footer id="footer" class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-wrapper">
+                        <div class="col-md-12 text-center">
+                            <small id="footer-text">&copy; Copyright 2018, All Rights Reserved.</small> 
+                            <small></small>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+      <div class="scrollup">
+      <a href="#"><i class="fa fa-chevron-up"></i></a>
+    </div>
+
+
+        <script src="assets/js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="assets/js/vendor/bootstrap.min.js"></script>
+
+        <script src="assets/js/plugins.js"></script>
+        <script src="assets/js/modernizr.js"></script>
+        <script src="assets/js/main.js"></script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZU42px9LIU5wT9d5k2JK6Pqog7eEWaSs&callback=myMap"  async defer>
+        </script>
+   </body>
+</html>

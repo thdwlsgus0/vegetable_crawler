@@ -1,0 +1,30 @@
+.login-panel, .signup-panel {
+    border : 1px solid #c6c6c6;
+}
+.login-submit-btn {
+    width : 100px;
+    height : 35px;
+    padding : 5px;
+    background: #337ab7;
+
+}
+.login-submit-btn:hover {
+    background-color: #00296d;
+    border : 1px solid #00296d;
+}
+.signup-submit-btn:hover {
+    background-color: #00296d;
+    border : 1px solid #00296d;
+}
+#login-body {
+    height : 260px;
+}
+#signup-body {
+  height: 370px;
+}
+
+#register-link {
+  margin-top: -85px;
+}
+
+/* 임시 */

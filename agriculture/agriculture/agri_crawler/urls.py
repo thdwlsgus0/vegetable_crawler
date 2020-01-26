@@ -1,0 +1,36 @@
+from django.conf.urls import url
+from . import views
+from django.contrib.auth import views as auth_views
+urlpatterns = [
+    url(r'^$', views.index, name='index'),
+    url(r'^tests', views.tests, name='tests'),
+    url(r'^navertest/$', views.navertest, name='navertest'),
+    url(r'^product',views.product, name='product'),
+    url(r'^login', views.login, name='login'),
+    url(r'^signup', views.signup, name='signup'),
+    url(r'^d3', views.d3, name='d3'),
+    url(r'^wating', views.wating, name='wating'),
+    url(r'^waiting', views.waiting, name='waiting'),
+    url(r'^idcheck', views.idcheck, name='idcheck'),
+    url(r'^auth_login', views.auth_login, name='auth_login'),
+    url(r'^kmeans', views.kmeans, name='kmeans'),
+    url(r'^practice/$', views.practice, name='practice'),
+    url(r'^processing/$',views.processing, name='processing'),
+    url(r'^complete$', views.complete, name='complete'),
+    url(r'^positive$', views.positive, name='positive'),
+    url(r'^logout$', views.logout, name='logout'),
+    url(r'^bloglist$', views.bloglist, name='bloglist'),
+    url(r'^newslist$', views.newslist, name='newslist'),
+    url(r'^alllist$', views.alllist, name='alllist'),
+    url(r'^sendmail$', views.sendmail, name='sendmail'),
+    url(r'^task$', views.task,name='task'),
+    url(r'^state_save$', views.state_save, name='state_save'),
+    url(r'^twitter$', views.twitter, name='twitter'),
+    url(r'^twitterlist$', views.twitterlist, name='twitterlist'),
+    url(r'^admin$', views.admin, name='admin'),
+    url(r'^analysis$', views.analysis, name='analysis'),
+    url(r'^PNjudgment$', views.PNjudgment, name='PNjudgment'),
+    url(r'^blog_result$', views.blog_result, name='blog_result'),
+    url(r'^news_result$', views.news_result, name='news_result'),
+    url(r'^twitter_result$', views.twitter_result, name='twitter_result')
+]

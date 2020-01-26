@@ -1,0 +1,33 @@
+.text-center, .jinhyun{
+font-family: 'Roboto Condensed', sans-serif;
+ font-size:20px;
+}
+.jinhyun_p{
+font-family: 'Roboto Condensed', sans-serif;
+  font-size:20px;
+}
+tspan{
+font-family: 'Roboto Condensed', sans-serif;
+}
+.jinhyun_img{
+    width:50px;
+    height:50px;
+}
+#container, #secondchart{
+ padding-left: -15px;
+}
+#stock{
+ position:relative;
+ left:500px;
+}
+.broadcast{
+ margin-left:500px;
+}
+.scrolltable tbody{
+overflow:auto;
+display:block;
+}
+.scrolltable{
+display:block;
+border-collapse:collapse;
+}

@@ -1,0 +1,12 @@
+words = ["할인"]
+word_dict ={
+ "광고":{
+   "할인":1
+ }
+}
+category_dict = {
+ "광고":1
+}
+bf.predict("재고 정리 할인, 무료 배송")
+best_category = None
+max_score =

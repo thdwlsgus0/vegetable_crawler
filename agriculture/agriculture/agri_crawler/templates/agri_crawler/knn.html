@@ -1,0 +1,140 @@
+
+
+<head>
+    <!-- Required meta tags -->
+    {% load staticfiles %}
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <!-- Material Design for Bootstrap fonts and icons -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <!-- Material Design for Bootstrap CSS -->
+      <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" crossorigin="anonymous">
+    <title>Euro Star</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-xl navbar-light">{% csrf_token %}
+        <div class="container">
+            <a class="navbar-brand" href="./"><img class="logo" src="{% static 'img/download.svg' %}"></img></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+           </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="classification.html">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                    </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-right">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Help</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+         <div class="card-deck my-4">
+            <div id="card1" class="card border-info text-center">
+               <div class="card-body">
+                  <h5 class="card-title">1. Upload the file to system (.xlsx, .xls, .txt, .csv)</h5>
+                  <p class="card-text text-info">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
+                       <div class="text-center">
+                          <div class="form-group">
+                             <button type="button" class="btn btn-outline-info js-upload"><i class="fa fa-upload" aria-hidden="true"></i> Upload file</button>
+                             <input id="fileupload" type="file" name="file" multiple style="display: none;" data-url="{% url 'basic_upload' %}" data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+                          </div>
+                       </div>
+                  </form>
+               </div>
+            </div>
+            <table>
+              <tr>
+                 <th>Field 1</th>
+                 <th>Field 2</th>
+              </tr>
+              {% for item in documents %}
+              <tr>   
+                 <td>{{item.field1 }}</td>
+                 <td>{{item.field2 }}</td>
+              </tr>
+             {% endfor %}
+            </table>
+            <div id="card2" class="card border-info text-center disabled-everything">
+               <div class="card-body">
+                  <h5 class="card-title">2. Choose Attributes & Input data point</h5>
+                  <p class="card-text text-info">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <button id="inputs" class="btn btn-outline-info" disabled>Add data point</button>
+               </div>
+            </div>
+            <div id="card3" class="card border-info text-center disabled-everything">
+               <div class="card-body">
+                  <h5 class="card-title">2. Apply <i>k</i>-NN to the input dataset</h5>
+                  <p class="card-text text-info">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <button id="knn" class="btn btn-outline-info">Apply KNN</button>
+               </div>
+            </div>
+         </div>
+
+         <div id="table-responsive" class="text-center" hidden>
+              <table id="sample-table" class="table table-bordered">
+              </table>
+            </div>
+            <div id="outgraph" class="row" hidden>
+              <div id="graph"></div>
+            </div>
+         </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New data point</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div id="modalbody" class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <div class="container text-center">
+              <button id="save-changes" type="button" class="btn btn-outline-info mr-auto">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <footer class="container footer">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2018 DALAB, Chungbuk National University. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer> -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/mine.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.ui.widget.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.fileupload.js' %}"></script>
+</body>
+
+</html>

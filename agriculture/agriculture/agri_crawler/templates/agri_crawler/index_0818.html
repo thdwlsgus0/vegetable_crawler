@@ -1,0 +1,352 @@
+<!doctype html>
+{% load staticfiles %}
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Big Data</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="stylesheet" href="{% static 'css2/bootstrap.min.css'%}">
+        <link rel="stylesheet" href="{% static 'css/boot1.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/mola.css' %}" />
+        <!--        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">-->
+        <link rel="stylesheet" href="{% static 'css2/datepicker.min.css' %}"/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+
+        <!--For Plugins external css-->
+        <link rel="stylesheet" href="{% static 'css2/roboto-webfont.css' %}">
+        <link rel="stylesheet" href="{% static 'css/mola.css' %}" />
+        <link rel="stylesheet" href="{% static 'css2/plugins.css' %}" />
+    <link rel="stylesheet" href="{% static 'css2/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css2/common.css' %}">
+        <!--Theme custom css -->
+        <link rel="stylesheet" href="{% static 'css2/style.css' %}">
+        <!--Theme Responsive css-->
+        <link rel="stylesheet" href="{% static 'css2/responsive.css' %}" />
+
+                <!-- 폰트 -->
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+        <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    </head>
+    <body data-spy="scroll" data-target=".navbar" data-offset="50">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+		<!-- 메뉴 -->
+        <nav id="menu" class="navbar navbar-default navbar-fixed-top shs-nav">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/team/logo1.png' %}" alt="Logo" /></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse shs-nav" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar navbar-nav navbar-right">
+                        <li class="active"><a href="#home">Home</a></li>
+                        <li><a href="#service">SERVICE</a></li>
+                        <li class="dropdown">
+                            <a href="#whatwedo" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true">PRODUCT</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{% url 'product' %}">Collect</a></li>
+                                <li><a href="{% url 'product' %}">Analysis</a></li>
+                                <li><a href="{% url 'product' %}">Visualization</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'product' %}">TEAM</a></li>
+                        <li><a href="{% url 'product' %}">CONTACT</a></li>
+                        <li><a href="{% url 'login' %}" role="button" class="btn btn-login">LOGIN</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+        <!--Home page style-->
+        <header id="home" class="home">
+            <div class="overlay-fluid-block" id="home">
+                <div class="container text-center">
+                    <div class="row">
+                        <div class="home-wrapper">
+                          <div class="col-md-12 col-sm-12 learnmore">
+                            <h1 class="index-title">BIG DATA SOLUTION</h1>
+                            <a href="#" class="btn btn-lg btn-default smoothScroll fadeInUp hidden-xs learn-btn" data-wow-delay="2.3s">LEARN MORE</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 인덱스 section-->
+        <!-- 데이터 설명 -->
+       
+        <section class="features sections">
+            <div id="service" class="container">
+                <div class="row">
+                     <div class="head_title text-center">
+                        <h2 class="top-title">SERVICES</h2>
+                    </div>
+                    <div class="main_features_content2">
+                        <!-- 데이터 수집 -->
+				
+                        <div class="col-sm-4">
+                            <div class="row">
+                                <div class="single_features_middle text-center">
+                                    <img src="{% static 'img/team/a.png'%}" alt="" class="main-images">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <h3 class="text-center">Data Collect</h2>
+                                <p class="text-center">뉴스와  블로그  데이터를 수집합니다.</p>
+                                <div class="text-center readmore">
+                                    <button type="button" class="btn btn-lg btn-info" data-toggle="modal" data-target="#read-collect-modal">READ MORE<span class="glyphicon glyphicon-chevron-right"></span></a> 
+                                </div>
+                                <div class="modal fade modal-white" id="read-collect-modal" tabindex="-1" role="dialog" aria-labelledby="readCollectModalLabel" aria-hidden="true" data-backdrop="false">
+                                <div class="modal-dialog">
+                                 <div class="modal-content">
+                                  <div class="modal-header">
+                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">&times;</button>
+                                  <h5 class="modal-title" id="exampleModalLabel">Data Collect</h5>
+                                  </div>
+                                  <div class="modal-body">
+                                   뉴스와 블로그와 같은 비정형 데이터를 수집합니다.
+                                  </div>
+                                 <div class="modal-footer">
+                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                           </div> 
+                          </div>
+                        </div>
+                          
+                        <!-- 데이터 분석 -->
+                        <div class="col-sm-4">
+                            <div class="row">
+                                <div class="single_features_middle text-center">
+                                    <img src="{% static 'img/team/b.png'%}" alt="" class="main-images">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h3 class="text-center">Data Analysis</h2>
+                                <p class="text-center">수집한 데이터들을 분석합니다.</p>
+                                <div class="text-center readmore">
+                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1">READ MORE<span class="glyphicon glyphicon-chevron-right"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class= "modal fade modal-white" id="myModal1" role="dialog" data-backdrop="false">
+                           <div class="modal-dialog">
+                            <div class="modal-content">
+                             <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Data Analysis</h4>
+                             </div>
+                             <div class="modal-body">
+                              <p>뉴스 기사에 대해서 긍정 기사인지 부정 기사인지를 구별해줍니다.</p>
+                             </div> 
+                             <div class="modal-footer">
+                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                             </div>
+                           </div>
+                           </div>
+                           </div>
+                        </div>
+                        <!-- 데이터 시각화 -->
+                        <div class="col-sm-4">
+                            <div class="row">
+                                <div class="single_features_middle text-center">
+                                    <img src="{% static 'img/team/c.png'%}" alt="" class="main-images">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h3 class="text-center">Data Visualization</h2>
+                                <p class="text-center">분석한 데이터들을 시각화해서 보여줍니다.</p>
+                                <div class="text-center readmore">
+                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">READ MORE<span class="glyphicon glyphicon-chevron-right"></span></button> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="myModal2" role="dialog" data-backdrop="false">
+             <div class="modal-dialog">
+              <div class="modal-content">
+               <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h4 class="modal-title">Data Visualization</h4>
+               </div>
+              <div class="modal-body">
+               <p>분석한 데이터들을 시각화 라이브러리를 이용해서 시각화해줍니다.</p>
+               </div>
+              <div class="modal-footer">
+               <button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+           </div>
+          </div>
+        </section><!-- 데이터 설명 끝 -->
+
+        <!-- product 소개 -->
+        <section class="team sections lightbg">
+            <div id="whatwedo" class="container">
+                <div class="row">
+                    <div class="head_title text-center">
+                        <h2 class="top-title">OUR WORK</h2>
+                    </div>
+
+                    <div>
+                        <div class="col-md-6">
+                            <img src="{% static 'img/team/work.png'%}" align="center" class="work-img">
+                        </div>
+                        <div class="col-md-5 col-md-offset-1 text-center">
+                        <p class="text-center team-introduce" style="width:700px;"><h4 class="team-title">  수집된 뉴스 기사를이용해서 데이터 분석을 진행합니다. 그리고 이를 통해서 긍/부정 기사를 판별 해줍니다. </p>
+                            <p class="text-center team-introduce"> </p>
+                            <a href="{% url 'product' %}" class="btn btn-lg button-index" data-wow-delay="2.3s">TRY IT</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- team 소개 -->
+        <section class="team sections">
+            <div id="team" class="container">
+                <div class="row">
+                    <div class="head_title text-center">
+                        <h2 class="top-title">TEAM MEMBER</h2>
+                    </div>
+
+                    <div class="team_contact">
+                        <div class="col-md-3 col-md-offset-2 text-center">
+                            <img src="{% static 'img/team/jinhyun.png'%}" class="img-circle text-center" alt="Team Member">
+                            <p class="text-center team-introduce"><h4 class="team-title">송진현</h4>충북대학교 소프트웨어학과</p>
+                            <p class="text-center team-introduce">데이터 수집 및 분석</p>
+                        </div>
+                        <div class="col-md-3 col-md-offset-2 text-center">
+                            <img src="{% static 'img/team/eunkyoung.png'%}" class="img-circle text-center" alt="Team Member">
+                            <p class="text-center team-introduce"><h4 class="team-title">김은경</h4>충북대학교 소프트웨어학과</p>
+                            <p class="text-center team-introduce">홈페이지 관리</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- contact 부분 -->
+        <section id="contact" class="contact sections lightbg">
+            <div class="container">
+                <div class="row">
+                    <div class="main_contact whitebackground">
+                        <div class="head_title text-center">
+                            <h2 class="top-title">CONTACT US</h2>
+                        </div>
+                        <div class="contact_content">
+                            <div class="col-md-6">
+                                <div class="single_left_contact">
+                                    <form id="contact-form" class="form" action="" method="post">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control contact-form" name="name" placeholder="Name" required="">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="email" class="form-control contact-form" name="email" placeholder="Email" required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control contact-form" name="message" rows="8" placeholder="Message"></textarea>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <input type="submit" value="Submit" class="btn button-index">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    <div id="map" style="width:100%; height: 350px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- contact 끝 -->
+
+
+        <!--Footer-->
+        <footer id="footer" class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-wrapper">
+                        <div class="col-md-12 text-center">
+                            <small id="footer-text">&copy; Copyright 2018, All Rights Reserved.</small>
+                            <small>AI캠프 박성현 송진현 김희아 김재현</small>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+	<!--	<div class="scrollup">
+			<a href="#"><i class="fa fa-chevron-up"></i></a>
+		</div>-->
+        <script src="{% static 'js/vendor/jquery-1.11.2.min.js' %}"></script>
+        <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+
+        <script src="{% static 'js/plugins.js' %}"></script>
+        <script src="{% static 'js/modernizr.js' %}"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/main2.js' %}"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZU42px9LIU5wT9d5k2JK6Pqog7eEWaSs&callback=myMap"  async defer>
+    </script>
+        <script>
+           $(document).ready(function(){
+           $(".navbar a").on('click', function(event){
+           if (this.hash!=="")
+           {
+            //event.preventDefault();
+            var hash = this.hash;
+            
+            $('html, body').animate({
+            scrollTop:$(hash).offset().top
+}, 900, function(){
+            window.location.hash = hash;
+           });
+          }
+         });
+        })
+            function myMap() {
+              var mapCanvas = document.getElementById("map");
+              var myCenter = new google.maps.LatLng(36.625584, 127.454397);
+              var mapOptions = {
+                center: myCenter,
+                    zoom: 17
+              };
+              var map = new google.maps.Map(mapCanvas, mapOptions);
+
+              var marker = new google.maps.Marker({position: myCenter});
+              marker.setMap(map);
+            }
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+#duplicate{
+    width:100px;
+    height:49px;
+    position:relative;
+    left:530px;
+    top:-47px;
+
+}
+.panel{
+   width:700px;
+    border: 1px solid red;
+}
+.InputUserform{
+    width:500px;
+    height:50px;
+}
+#password{
+    position:relative;
+    top:-25px;
+}
