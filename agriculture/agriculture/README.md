@@ -11,16 +11,16 @@
 5.  관리자페이지가 따로 있어서 사용자들이 수집한 정보들을 관리할 수 있음
 
 * 데이터 수집/ 분석/ 시각화 선택 가능
-![default](imgs/main.png)
+![default](imgs/main.PNG)
 
 * 시각화기능
-![default](imgs/visualzation.png)
+![default](imgs/visualzation.PNG)
 
 * 관리자 기능
-![default](imgs/관리자.png)
+![default](imgs/관리자.PNG)
 
 * 수집 창
-![default](imgs/수집1.png)
+![default](imgs/수집1.PNG)
 
 * 수집 결과 창 
-![default](imgs/수지12.png)
+![default](imgs/수지12.PNG)
